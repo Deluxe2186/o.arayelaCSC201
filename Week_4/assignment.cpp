@@ -17,7 +17,9 @@ string location;
 float lodging;
 
 int main() {
-    
+    string reentry;
+    int redo = 1;
+    do{
     cout<<"Enter your full name: ";
     getline(cin,full_name);
 
@@ -40,43 +42,43 @@ int main() {
     cout<<"Enter course(1-5): "; 
     cin>>course_choice;
 
-    if (course_choice == 1)
-    {
+    switch(course_choice){
+        case 1:
         course = "Photography";
         days = 3;
         reg = 10000;
-    }
-    else if (course_choice == 2)
-    {
+        break;
+        
+        case 2:
         course = "Painting";
         days = 5;
         reg = 8000;
-    }
-    else if (course_choice == 3)
-    {
+        break;
+        
+        case 3:
         course = "Fish Farming";
         days = 7;
         reg = 15000;
-    }
-    else if (course_choice == 4)
-    {
+        break;
+        
+        case 4:
         course = "Baking";
         days = 5;
         reg = 13000;
-    }
-    else if (course_choice == 5)
-    {
+        break;
+        
+        case 5:
         course = "Public Speaking";
         days = 2;
         reg = 5000;
-    }
-    else
-    {
+        break;
+        
+        default:
         cout<<"Invalid response please enter a number between 1 and 5.";
-    }
-    
-    //This is the decision making process 
-    //for the location of choice
+    } 
+
+    /*This is the decision making process 
+    for the location of choice*/
 
     cout<<"\nLOCATIONS";
     cout<<"1-> Camp House A"<<endl;
@@ -87,37 +89,36 @@ int main() {
     cout<<"\nEnter location(1-5): ";
     cin>>location_choice;
 
-
-    if (location_choice == 1)
-    {
+    switch(location_choice){
+        case 1:
         location = "Camp House A";
         lodging = 10000;
-    }
-    else if (location_choice == 2)
-    {
+        break;
+        
+        case 2:
         location = "Camp House B";
         lodging = 2500;
-    }
-    else if (location_choice == 3)
-    {
+        break;
+
+        case 3:
         location = "Camp House C";
         lodging = 5000;
-    }
-    else if (location_choice == 4)
-    {
+        break;
+
+        case 4:
         location = "Camp House D";
         lodging = 13000;
-    }
-    else if (location_choice == 5)
-    {
+        break;
+
+        case 5:
         location = "Camp House E";
         lodging = 5000;
-    }
-    else 
-    {
+        break;
+
+        default:
         cout<<"Invalid response please enter a number between 1 and 5.";
     }
-
+    
     //Making the lodging discount system
     int lodging_cost = lodging * days;
     int total = reg + lodging_cost;
@@ -175,4 +176,20 @@ int main() {
     cout<<"Random draw: "<<r<<endl;
     cout<<"Promo applied: ₦"<<promo<<endl;
     cout<<"\nTOTAL: ₦"<<total;
+
+    //loop to restart code based on user input
+    cout<<"\n\nWould you like to fill in another entry? (y/n): ";
+    cin>>reentry;
+    if (reentry == "y"|| reentry == "Y"){
+        redo = 1;
+    }
+    else if (reentry == "n"|| reentry == "N"){
+        redo = 0;
+    }
+    else{
+        return 0;
+    }
+
+}
+while(redo != 0);
 }
